@@ -11,9 +11,9 @@ import {
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
-// You should replace this with your own TMDb API key
+// TMDb API Bearer Token (v4 authentication)
 // Get one at: https://www.themoviedb.org/settings/api
-const API_KEY = process.env.EXPO_PUBLIC_TMDB_API_KEY || 'YOUR_TMDB_API_KEY';
+const API_TOKEN = process.env.EXPO_PUBLIC_TMDB_API_TOKEN || '';
 
 // Image URL helpers
 export const getImageUrl = (path: string | null, size: ImageSize = 'w500'): string | null => {
@@ -42,13 +42,17 @@ export type ImageSize = PosterSize | BackdropSize | ProfileSize;
 // Generic fetch helper
 async function fetchFromTMDb<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
   const url = new URL(`${BASE_URL}${endpoint}`);
-  url.searchParams.append('api_key', API_KEY);
 
   Object.entries(params).forEach(([key, value]) => {
     url.searchParams.append(key, value);
   });
 
-  const response = await fetch(url.toString());
+  const response = await fetch(url.toString(), {
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+  });
 
   if (!response.ok) {
     throw new Error(`TMDb API error: ${response.status} ${response.statusText}`);
