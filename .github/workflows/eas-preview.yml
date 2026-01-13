@@ -1,0 +1,39 @@
+name: EAS Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    name: Create Expo Go Preview
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Expo CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create Expo Go preview
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: eas update --auto --branch=pr-${{ github.event.pull_request.number }}
+          comment: true
+          comment-id: expo-preview-${{ github.event.pull_request.number }}
+          qr-target: expo-go

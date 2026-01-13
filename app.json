@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Movie Tracker",
+    "slug": "movie-tracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "scheme": "movie-tracker",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.movietracker.app",
+      "infoPlist": {
+        "UIBackgroundModes": ["fetch"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.movietracker.app",
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/your-project-id"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
+  }
+}
