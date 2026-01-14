@@ -32,20 +32,6 @@
     "web": {
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "your-project-id"
-      }
-    },
-    "updates": {
-      "url": "https://u.expo.dev/your-project-id"
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
     }
   }
 }
