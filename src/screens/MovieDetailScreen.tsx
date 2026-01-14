@@ -68,7 +68,7 @@ export const MovieDetailScreen: React.FC = () => {
       setCredits(creditsData);
       setSimilar(similarData.results);
     } catch (error) {
-      console.error('Error fetching movie:', error);
+      console.error('Error fetching movie:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsLoading(false);
     }

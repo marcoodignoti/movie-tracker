@@ -73,7 +73,7 @@ export const ShowDetailScreen: React.FC = () => {
       setCredits(creditsData);
       setSimilar(similarData.results);
     } catch (error) {
-      console.error('Error fetching show:', error);
+      console.error('Error fetching show:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsLoading(false);
     }

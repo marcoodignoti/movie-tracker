@@ -8,16 +8,25 @@
       "distribution": "internal",
       "ios": {
         "simulator": true
+      },
+      "env": {
+        "EXPO_PUBLIC_TMDB_API_TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzkzMjlmMmNjMTgzNWRhOTFiZjc1MzYzYjM2NjRlOCIsIm5iZiI6MTc2NjM3MDM1OC40NjQsInN1YiI6IjY5NDhhYzM2OTQwNDFhMDE5MjgxMjdhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WT1PIfJkVYXTEdG6HgxG9_AjyjHaPIyPEiBQI1ofxAg"
       }
     },
     "preview": {
       "distribution": "internal",
       "ios": {
         "simulator": true
+      },
+      "env": {
+        "EXPO_PUBLIC_TMDB_API_TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzkzMjlmMmNjMTgzNWRhOTFiZjc1MzYzYjM2NjRlOCIsIm5iZiI6MTc2NjM3MDM1OC40NjQsInN1YiI6IjY5NDhhYzM2OTQwNDFhMDE5MjgxMjdhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WT1PIfJkVYXTEdG6HgxG9_AjyjHaPIyPEiBQI1ofxAg"
       }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_TMDB_API_TOKEN": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzkzMjlmMmNjMTgzNWRhOTFiZjc1MzYzYjM2NjRlOCIsIm5iZiI6MTc2NjM3MDM1OC40NjQsInN1YiI6IjY5NDhhYzM2OTQwNDFhMDE5MjgxMjdhMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WT1PIfJkVYXTEdG6HgxG9_AjyjHaPIyPEiBQI1ofxAg"
+      }
     }
   },
   "submit": {
