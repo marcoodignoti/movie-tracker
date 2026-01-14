@@ -37,3 +37,5 @@ jobs:
           comment: true
           comment-id: expo-preview-${{ github.event.pull_request.number }}
           qr-target: expo-go
+        env:
+          EXPO_PUBLIC_TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
