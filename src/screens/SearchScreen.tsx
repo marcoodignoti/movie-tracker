@@ -61,7 +61,7 @@ export const SearchScreen: React.FC = () => {
       searchResults.sort((a, b) => b.popularity - a.popularity);
       setResults(searchResults);
     } catch (error) {
-      console.error('Search error:', error);
+      console.error('Search error:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsLoading(false);
     }

@@ -54,7 +54,7 @@ export const ShowsScreen: React.FC = () => {
       setTopRated(topRatedRes.results);
       setTrending(trendingRes.results);
     } catch (error) {
-      console.error('Error fetching shows:', error);
+      console.error('Error fetching shows:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsLoading(false);
       setIsRefreshing(false);

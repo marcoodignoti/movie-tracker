@@ -59,7 +59,7 @@ export const DiscoverScreen: React.FC = () => {
       setPopularMovies(popularMoviesRes.results);
       setPopularShows(popularShowsRes.results);
     } catch (error) {
-      console.error('Error fetching discover data:', error);
+      console.error('Error fetching discover data:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsLoading(false);
       setIsRefreshing(false);

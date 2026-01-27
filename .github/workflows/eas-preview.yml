@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Create .env file
+        run: echo "EXPO_PUBLIC_TMDB_API_TOKEN=${{ secrets.TMDB_API_TOKEN }}" > .env
+
       - name: Create Expo Go preview
         uses: expo/expo-github-action/preview@v8
         with:
@@ -37,3 +40,5 @@ jobs:
           comment: true
           comment-id: expo-preview-${{ github.event.pull_request.number }}
           qr-target: expo-go
+        env:
+          EXPO_PUBLIC_TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}

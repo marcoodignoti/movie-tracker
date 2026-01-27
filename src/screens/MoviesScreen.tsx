@@ -54,7 +54,7 @@ export const MoviesScreen: React.FC = () => {
       setUpcoming(upcomingRes.results);
       setTrending(trendingRes.results);
     } catch (error) {
-      console.error('Error fetching movies:', error);
+      console.error('Error fetching movies:', error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setIsLoading(false);
       setIsRefreshing(false);

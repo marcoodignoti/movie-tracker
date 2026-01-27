@@ -1,0 +1,16 @@
+{
+  "findings": [
+    {
+      "ruleId": "API_KEY_EXPOSED",
+      "description": "Bearer token detected: Bearer T...[REDACTED]",
+      "severity": "MEDIUM",
+      "filePath": "C:/Users/marco/movie-tracker/src/api/tmdb.ts",
+      "line": 14,
+      "snippet": "const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';\r\n\r\n// TMDb API Bearer Token (v4 authentication)\r\n// Get one at: https://www.themoviedb.org/settings/api\r\nconst API_TOKEN = process.env.EXPO_PUBLIC_TMDB_API_TOKEN || '';\r",
+      "suggestion": "Move Bearer Token to environment variables or secure config management. Never commit secrets to version control."
+    }
+  ],
+  "scannedFiles": 27,
+  "duration": 1814,
+  "timestamp": "2026-01-14T02:10:37.987Z"
+}

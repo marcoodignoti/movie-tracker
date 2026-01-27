@@ -39,7 +39,10 @@ export type BackdropSize = 'w300' | 'w780' | 'w1280' | 'original';
 export type ProfileSize = 'w45' | 'w185' | 'h632' | 'original';
 export type ImageSize = PosterSize | BackdropSize | ProfileSize;
 
-// Generic fetch helper
+// Request timeout in milliseconds
+const REQUEST_TIMEOUT = 30000;
+
+// Generic fetch helper with timeout
 async function fetchFromTMDb<T>(endpoint: string, params: Record<string, string> = {}): Promise<T> {
   const url = new URL(`${BASE_URL}${endpoint}`);
 
@@ -47,18 +50,27 @@ async function fetchFromTMDb<T>(endpoint: string, params: Record<string, string>
     url.searchParams.append(key, value);
   });
 
-  const response = await fetch(url.toString(), {
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Content-Type': 'application/json',
-    },
-  });
+  // Create AbortController for timeout
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
-  if (!response.ok) {
-    throw new Error(`TMDb API error: ${response.status} ${response.statusText}`);
+  try {
+    const response = await fetch(url.toString(), {
+      headers: {
+        'Authorization': `Bearer ${API_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`TMDb API error: ${response.status}`);
+    }
+
+    return response.json();
+  } finally {
+    clearTimeout(timeoutId);
   }
-
-  return response.json();
 }
 
 // Movie endpoints
